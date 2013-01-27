@@ -52,8 +52,8 @@ Vagrant::Config.run do |config|
         :s3_key => ENV['S3_KEY'] || '123',
         :s3_secret => ENV['S3_SECRET'] || '123',
         :s3_bucket => ENV['S3_BUCKET'] || 'openruko',
-    		:s3_hostname => 'mymachine.me',
-    		:s3_port => 4567
+        :s3_hostname => 'mymachine.me',
+        :s3_port => 4567
       }
     }
   end
