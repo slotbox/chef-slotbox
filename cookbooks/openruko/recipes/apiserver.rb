@@ -20,17 +20,9 @@ end
 
 bash "setup-postgres" do
   code <<-EOF
+  set -e
   sudo -u postgres psql <<< "CREATE ROLE vagrant PASSWORD 'md5ce5f2d27bc6276a03b0328878c1dc0e2' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
-  EOF
-end
-
-bash "setup" do
-  user "vagrant"
-  cwd "/home/vagrant/openruko/apiserver/postgres"
-  environment Hash['HOME' => '/home/vagrant']
-
-  code <<-EOF
-  echo -e "openruko\nvagrant\nopenruko@openruko.com\nvagrant" | ./setup
+  createdb openruko
   EOF
 end
 
