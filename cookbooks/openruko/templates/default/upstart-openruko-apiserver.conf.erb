@@ -10,4 +10,5 @@ export S3_PORT="<%= node['s3']['s3_port'] %>";  \
 export S3_KEY="<%= node['s3']['s3_key'] %>";  \
 export S3_SECRET="<%= node['s3']['s3_secret'] %>";  \
 export S3_BUCKET="<%= node['s3']['s3_bucket'] %>";  \
+export APISERVER_KEY="<%= node['apiserver_key'] %>";  \
 apiserver/bin/apiserver >> /var/log/openruko/apiserver.log 2>&1'
