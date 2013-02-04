@@ -18,11 +18,17 @@ bash "setup-apiserver" do
   EOF
 end
 
-bash "setup-postgres" do
+bash "setup-postgres-user" do
+  user  "postgres"
   code <<-EOF
-  set -e
-  sudo -u postgres psql <<< "CREATE ROLE vagrant PASSWORD 'md5ce5f2d27bc6276a03b0328878c1dc0e2' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
-  createdb openruko
+  psql <<< "CREATE ROLE vagrant PASSWORD 'md5ce5f2d27bc6276a03b0328878c1dc0e2' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+  EOF
+end
+
+bash "setup-postgres-database" do
+  user  "vagrant"
+  code <<-EOF
+  psql postgres <<< "CREATE DATABASE openruko;"
   EOF
 end
 
