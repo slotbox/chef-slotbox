@@ -27,7 +27,7 @@ bash "setup-gitmouth-certs" do
 
   code <<-EOF
   rm -fr certs
-  echo "\n\n" | make certs
+  expect <<- EOH\nspawn make certs \nexpect "*passphrase*"\nsend -- "\r"\nexpect "*passphrase*"\nsend -- "\r"\ninteract\nEOH
   EOF
 end
 
