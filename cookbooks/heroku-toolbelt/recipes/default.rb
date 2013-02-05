@@ -10,6 +10,8 @@ script "setup-heroku-toolbelt" do
   wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
   apt-get update
   EOF
+
+  not_if "which heroku"
 end
 
 package "heroku-toolbelt"
