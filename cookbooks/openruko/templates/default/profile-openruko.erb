@@ -1,11 +1,10 @@
-export APISERVER_KEY=<%= node['apiserver_key'] %>
-export PG_USER=rukosan
-export PG_PASSWORD=rukosan
+export APISERVER_KEY=<%= node['openruko']['apiserver_key'] %>
+export PG_USER=<%= node['user'] %>
+export PG_PASSWORD=<%= node['postgresql']['password'][node['user']] %>
 export S3_KEY=<%= node['s3']['s3_key'] %>
 export S3_SECRET=<%= node['s3']['s3_secret'] %>
 export S3_BUCKET=<%= node['s3']['s3_bucket'] %>
-export RUKORUN_PATH=/home/rukosan/openruko/rukorun
-export CODONHOOKS_PATH=/home/rukosan/openruko/codonhooks
-export SLOTBOX_HOST=slotbox.local
+export RUKORUN_PATH=<%= node['openruko']['home'] %>/rukorun
+export CODONHOOKS_PATH=<%= node['openruko']['home'] %>/codonhooks
 export GEM_HOME=~/.gem/ruby/1.9.1
 export PATH=$PATH:~/.gem/ruby/1.9.1/bin/

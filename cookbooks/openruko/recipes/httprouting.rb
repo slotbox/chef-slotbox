@@ -1,15 +1,16 @@
-git "/home/rukosan/openruko/httprouting" do
-  user "rukosan"
-  group "rukosan"
+git "#{node['openruko']['home']}/httprouting" do
+  user node['user']
+  group node['group']
   repository "https://github.com/Filirom1/httprouting.git"
   action :checkout
   revision node["versions"]["httprouting"]
 end
 
 bash "setup-httprouting" do
-  user  "rukosan"
-  cwd   "/home/rukosan/openruko/httprouting"
-  environment Hash['HOME' => '/home/rukosan']
+  user node['user']
+  group node['group']
+  cwd   "#{node['openruko']['home']}/httprouting"
+  environment Hash['HOME' => node['home']]
 
   code <<-EOF
   set -e

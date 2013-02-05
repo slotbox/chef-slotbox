@@ -2,4 +2,4 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - rukosan -c 'cd /home/rukosan/openruko/gitmouth; ./bin/gitmouth >> /var/log/openruko/gitmouth.log 2>&1'
+exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/gitmouth; ./bin/gitmouth >> /var/log/openruko/gitmouth.log 2>&1'

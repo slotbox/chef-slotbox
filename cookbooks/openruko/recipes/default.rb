@@ -8,19 +8,9 @@ package "uuid-dev"
 package "libssl0.9.8"
 package "lxc"
 
-bash "setup-slotbox.local-domain" do
-  user  "root"
-  code <<-EOF
-  echo "127.0.0.1 openruko.local" >> /etc/hosts
-  echo "127.0.0.1 hello-world.local" >> /etc/hosts
-  EOF
-
-  not_if "grep 'openruko\.local' /etc/hosts"
-end
-
-directory "/home/rukosan/openruko" do
-  owner "rukosan"
-  group "rukosan"
+directory node['openruko']['home'] do
+  user node['user']
+  group node['group']
   mode 0755
 end
 

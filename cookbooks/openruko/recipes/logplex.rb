@@ -1,15 +1,16 @@
-git "/home/rukosan/openruko/logplex" do
-  user "rukosan"
-  group "rukosan"
+git "#{node['openruko']['home']}/logplex" do
+  user node['user']
+  group node['group']
   repository "https://github.com/openruko/logplex.git"
   action :checkout
   revision node["versions"]["logplex"]
 end
 
 bash "setup-logplex" do
-  user  "rukosan"
-  cwd   "/home/rukosan/openruko/logplex"
-  environment Hash['HOME' => '/home/rukosan']
+  user node['user']
+  group node['group']
+  cwd   "#{node['openruko']['home']}/logplex"
+  environment Hash['HOME' => node['home']]
 
   code <<-EOF
   make init

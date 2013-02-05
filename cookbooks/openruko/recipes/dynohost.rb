@@ -1,15 +1,16 @@
-git "/home/rukosan/openruko/dynohost" do
-  user "rukosan"
-  group "rukosan"
+git "#{node['openruko']['home']}/dynohost" do
+  user node['user']
+  group node['group']
   repository "https://github.com/openruko/dynohost.git"
   action :checkout
   revision node["versions"]["dynohost"]
 end
 
 bash "setup-dynohost" do
-  user  "rukosan"
-  cwd   "/home/rukosan/openruko/dynohost"
-  environment Hash['HOME' => '/home/rukosan']
+  user node['user']
+  group node['group']
+  cwd   "#{node['openruko']['home']}/dynohost"
+  environment Hash['HOME' => node['home']]
 
   code <<-EOF
   set -e

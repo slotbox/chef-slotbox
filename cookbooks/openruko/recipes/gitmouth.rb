@@ -1,15 +1,16 @@
-git "/home/rukosan/openruko/gitmouth" do
-  user "rukosan"
-  group "rukosan"
+git "#{node['openruko']['home']}/gitmouth" do
+  user node['user']
+  group node['group']
   repository "https://github.com/openruko/gitmouth.git"
   action :checkout
   revision node["versions"]["gitmouth"]
 end
 
 bash "setup-gitmouth" do
-  user  "rukosan"
-  cwd   "/home/rukosan/openruko/gitmouth"
-  environment Hash['HOME' => '/home/rukosan']
+  user node['user']
+  group node['group']
+  cwd   "#{node['openruko']['home']}/gitmouth"
+  environment Hash['HOME' => node['home']]
 
   code <<-EOF
   set -e
@@ -20,12 +21,13 @@ bash "setup-gitmouth" do
 end
 
 bash "setup-gitmouth-certs" do
-  user  "rukosan"
-  cwd   "/home/rukosan/openruko/gitmouth"
+  user node['user']
+  group node['group']
+  cwd   "#{node['openruko']['home']}/gitmouth"
 
   code <<-EOF
   rm -fr certs
-  expect <<- EOH\nspawn make certs \nexpect "*passphrase*"\nsend -- "\r"\nexpect "*passphrase*"\nsend -- "\r"\ninteract\nEOH
+  echo "\n\n" | make certs
   EOF
 end
 

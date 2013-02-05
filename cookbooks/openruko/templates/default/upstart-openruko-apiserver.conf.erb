@@ -2,12 +2,13 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - rukosan -c 'cd /home/rukosan/openruko/apiserver; \
-export PG_USER="rukosan"; \
-export PG_PASSWORD="rukosan"; \
+exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/apiserver; \
+export PG_USER=<%= node['user'] %>; \
+export PG_PASSWORD=<%= node['postgresql']['password'][node['user']] %>
 export S3_HOSTNAME="<%= node['s3']['s3_hostname'] %>";  \
 export S3_PORT="<%= node['s3']['s3_port'] %>";  \
 export S3_KEY="<%= node['s3']['s3_key'] %>";  \
 export S3_SECRET="<%= node['s3']['s3_secret'] %>";  \
 export S3_BUCKET="<%= node['s3']['s3_bucket'] %>";  \
+export APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"; \
 apiserver/bin/apiserver >> /var/log/openruko/apiserver.log 2>&1'

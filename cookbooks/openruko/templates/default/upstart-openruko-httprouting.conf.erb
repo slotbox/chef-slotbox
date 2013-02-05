@@ -2,9 +2,9 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - rukosan -c 'cd /home/rukosan/openruko/httprouting; \
-export PG_USER="rukosan"; \
-export PG_PASSWORD="rukosan"; \
+exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/httprouting; \
+export PG_USER=<%= node['user'] %>; \
+export PG_PASSWORD=<%= node['postgresql']['password'][node['user']] %>
 export HTTPROUTING_PORT=8080; \
 export HTTPROUTING_TLS=true; \
 httprouting/bin/httprouting >> /var/log/openruko/httprouting.log 2>&1'

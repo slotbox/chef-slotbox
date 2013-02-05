@@ -9,30 +9,44 @@
       "recipe[nodejs::install_from_package]",
       "recipe[fakes3]",
       "recipe[python]",
-      //"recipe[proxy]"
+      "recipe[proxy]",
       "recipe[openruko]",
       "recipe[heroku-toolbelt]"
     ],
 
     "versions" : {
-      "apiserver": "e697595e74185364e95df86d62081645bc8a7a73",
-      "client": "503f93444bb28d0227aa9e758a78262165e69248",
-      "codonhooks": "a17c4b49831e5fbe47e6373916915bbfb326be47",
-      "dynohost": "da5b43e1997084d743d9072ec46b271a1ede7328",
-      "httprouting": "16e5c4011938f3964ed3bcaadca30fb58851f3a1",
-      "integration-tests": "934491b98d01a0a8eb73eafcf5bab6428a32bcd6",
-      "logplex": "6ed56cfae6eb8fdd822f2bd14c8663c5b9287e9a",
-      "gitmouth": "a27da2e37ffc9df522b1fc829520a8ef904b6faa",
-      "rukorun": "21a0c28c4a88e5b4a6d3e87ebb675c7e26ac7d58"
+      "apiserver": "master",
+      "client": "master",
+      "codonhooks": "master",
+      "dynohost": "master",
+      "httprouting": "master",
+      "integration-tests": "master",
+      "logplex": "master",
+      "gitmouth": "master",
+      "rukorun": "master"
     },
 
-    "apiserver_key": "ec1a8eb9-18a6-42c2-81ec-c0f0f615280c",
+    "user": "rukosan",
+    "group": "rukosan",
+    "home": "/home/rukosan",
+
+    "openruko": {
+      "home": "/home/rukosan/openruko",
+      "passsword": "rukosan",
+      "apiserver_key": "ec1a8eb9-18a6-42c2-81ec-c0f0f615280c",
+    },
+
     "s3": {
       "s3_key": "123",
       "s3_secret": "123",
       "s3_bucket": "openruko",
       "s3_hostname": "mymachine.me",
       "s3_port": "4567"
+    },
+
+    "fakes3": {
+      "user": "rukosan",
+      "group": "rukosan"
     },
 
     "postgresql": {
@@ -43,7 +57,8 @@
         { "method": "trust", "address": "::1/0" }
       ],
       "password": {
-        "postgres": "password"
+        "postgres": "password",
+        "rukosan": "rukosan"
       }
     }
 }

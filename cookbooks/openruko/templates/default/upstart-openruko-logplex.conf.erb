@@ -2,5 +2,5 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - rukosan -c 'cd /home/rukosan/openruko/logplex; \
+exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/logplex; \
 logplex/bin/logplex >> /var/log/openruko/logplex.log 2>&1'

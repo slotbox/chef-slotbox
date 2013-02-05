@@ -1,6 +1,6 @@
-git "/home/rukosan/openruko/codonhooks" do
-  user "rukosan"
-  group "rukosan"
+git "#{node['openruko']['home']}/codonhooks" do
+  user node['user']
+  group node['group']
   repository "https://github.com/openruko/codonhooks.git"
   action :checkout
   revision node["versions"]["codonhooks"]
