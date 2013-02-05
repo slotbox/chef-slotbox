@@ -20,6 +20,14 @@ bash "setup-apiserver" do
   EOF
 end
 
+bash "setup-postgres-database" do
+  user  node['user']
+  group  node['group']
+  code <<-EOF
+  psql postgres <<< "CREATE DATABASE openruko;"
+  EOF
+end
+
 template "/etc/init/openruko-apiserver.conf" do
   source "upstart-openruko-apiserver.conf.erb"
   owner "root"

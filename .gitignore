@@ -4,3 +4,4 @@ chef-stacktrace.out
 Vagrantfile.local
 distribute-*
 distribute_setup.py
+npm-debug.log
