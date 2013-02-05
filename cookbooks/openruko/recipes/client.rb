@@ -6,7 +6,7 @@ git "#{node['openruko']['home']}/client" do
   revision node["versions"]["client"]
 end
 
-template "/home/rukosan/.ssh/config" do
+template "#{node['home']}/.ssh/config" do
   source "ssh-config.erb"
   owner "root"
   group "root"
