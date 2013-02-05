@@ -20,6 +20,13 @@ bash "setup-apiserver" do
   EOF
 end
 
+bash "setup-postgres-user" do
+  user  "postgres"
+  code <<-EOF
+  psql <<< "CREATE ROLE #{node['user']} ENCRYPTED PASSWORD '#{node['postgresql']['password'][node['user']]}' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+  EOF
+end
+
 bash "setup-postgres-database" do
   user  node['user']
   group  node['group']

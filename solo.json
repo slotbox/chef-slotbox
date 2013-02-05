@@ -49,6 +49,9 @@
       "group": "rukosan"
     },
 
+    "proxy": {
+    },
+
     "postgresql": {
       "version": "9.1",
       "listen_addresses": "*",
