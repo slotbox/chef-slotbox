@@ -1,4 +1,5 @@
 # Bootstrapping OpenRuko
+[![Build Status](https://travis-ci.org/openruko/vagrant-openruko.png)](https://travis-ci.org/openruko/vagrant-openruko)
 
 Chef recipes for bootstrapping [OpenRuko](https://github.com/openruko).
 
