@@ -30,13 +30,12 @@ $ ./deploy.sh root@<host>
 
 ## Launch tests
 
-The first usage of `Chef OpenRuko` was for testing openruko on a clean VM.
-
-To launch the tests login to the server (`vagrant ssh` if your using Vagrant) and run:
+Tests will be launched automatically by Vagrant.
+If you do not use Vagrant (chef-solo), login to the server and run
 
 ```
 $ sudo su - rukosan
-[rukosan] $ cd /home/rukosan/openruko/integration-tests
+[rukosan] $ cd ~/openruko/integration-tests
 [rukosan] $ ./run.sh
 ```
 
