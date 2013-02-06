@@ -67,8 +67,6 @@ else
 
 	# rvmsudo is the only way to give chef the needed permissions
 	sudo_command=rvmsudo
-
-  tail -f /var/log/openruko/* &
 fi
 
 $sudo_command chef-solo -c solo.rb -j solo.json
