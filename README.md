@@ -31,7 +31,7 @@ $ ./deploy.sh root@<host>
 ## Launch tests
 
 Tests will be launched automatically by Vagrant.
-If you do not use Vagrant (chef-solo), login to the server and run
+If you do not use Vagrant, login to the server and run
 
 ```
 $ sudo su - rukosan
@@ -81,6 +81,3 @@ EOF
 [rukosan] $ git push heroku master
 [rukosan] $ curl 127.0.0.1:1337
 ```
-
-
-
