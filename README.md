@@ -30,13 +30,11 @@ $ ./deploy.sh root@<host>
 
 ## Launch tests
 
-Tests will be launched automatically by Vagrant.
-If you do not use Vagrant, login to the server and run
+Login to the server (vagrant ssh) and run
 
 ```
-$ sudo su - rukosan
-[rukosan] $ cd ~/openruko/integration-tests
-[rukosan] $ ./run.sh
+$ cd ~/openruko/integration-tests
+$ ./run.sh
 ```
 
 See also [integration-tests](https://github.com/openruko/integration-tests)
@@ -54,11 +52,11 @@ export NO_PROXY=localhost
 Connect to the server with SSH, and create a new project (we will use node.js)
 
 ```
-[rukosan] $ mkdir myapp
-[rukosan] $ cd myapp
-[rukosan] $ git init
-[rukosan] $ npm init
-[rukosan] $ cat > index.js << EOF
+$ mkdir myapp
+$ cd myapp
+$ git init
+$ npm init
+$ cat > index.js << EOF
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -67,17 +65,17 @@ http.createServer(function (req, res) {
 console.log('Server running at http://127.0.0.1:1337/');
 EOF
 
-[rukosan] $ cat > Procfile << EOF
+$ cat > Procfile << EOF
 web: node index.js
 EOF
 
-[rukosan] $ git add -A
-[rukosan] $ git commit -m 'fisrt commit'
+$ git add -A
+$ git commit -m 'fisrt commit'
 
-[rukosan] $ ~/openruko/client/openruko create myapp
+$ ~/openruko/client/openruko create myapp
 # email: openruko@openruko.com
 # Password: rukosan
 
-[rukosan] $ git push heroku master
-[rukosan] $ curl 127.0.0.1:1337
+$ git push heroku master
+$ curl 127.0.0.1:1337
 ```

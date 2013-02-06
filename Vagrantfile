@@ -44,7 +44,6 @@ Vagrant::Config.run do |config|
     end
   end
 
-  config.vm.provision :shell, :inline => "source /etc/profile; cd openruko/integration-tests && sudo -u vagrant -E env HOME=/home/vagrant bash run.sh"
 end
 
 # If you want to do some funky custom stuff to your box, but don't want those things tracked by git,
