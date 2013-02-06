@@ -23,8 +23,11 @@ Vagrant::Config.run do |config|
     chef.json["openruko"]["password"] = "vagrant"
     chef.json["fakes3"]["user"] = "vagrant"
     chef.json["fakes3"]["group"] = "vagrant"
-
     chef.json["postgresql"]["password"]["vagrant"] = "vagrant"
+    chef.json["proxy"]["http_proxy"] = ENV['HTTP_PROXY']
+    chef.json["proxy"]["https_proxy"] = ENV['HTTPS_PROXY']
+    chef.json["proxy"]["no_proxy"] = "mymachine.me," + (ENV['NO_PROXY'] || '')
+
     chef.json["run_list"].each do |recipe_name|
       chef.add_recipe recipe_name
     end
