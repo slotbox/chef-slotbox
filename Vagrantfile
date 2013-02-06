@@ -10,6 +10,20 @@ Vagrant::Config.run do |config|
   # Allow access to the VM's IP from host
   config.vm.network :bridged
 
+  # First apply proxy recipe
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = 'cookbooks'
+
+    chef.add_recipe 'proxy'
+    chef.json = {
+      :proxy => {
+        :http_proxy => ENV['HTTP_PROXY'],
+        :https_proxy => ENV['HTTPS_PROXY'],
+        :no_proxy => "mymachine.me," + (ENV['NO_PROXY'] || '')
+      }
+    }
+  end
+
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = 'cookbooks'
 
@@ -24,9 +38,6 @@ Vagrant::Config.run do |config|
     chef.json["fakes3"]["user"] = "vagrant"
     chef.json["fakes3"]["group"] = "vagrant"
     chef.json["postgresql"]["password"]["vagrant"] = "vagrant"
-    chef.json["proxy"]["http_proxy"] = ENV['HTTP_PROXY']
-    chef.json["proxy"]["https_proxy"] = ENV['HTTPS_PROXY']
-    chef.json["proxy"]["no_proxy"] = "mymachine.me," + (ENV['NO_PROXY'] || '')
 
     chef.json["run_list"].each do |recipe_name|
       chef.add_recipe recipe_name
