@@ -14,6 +14,18 @@ directory node['openruko']['home'] do
   mode 0755
 end
 
+bash "setup mymachine.me domain" do
+  user "root"
+  code <<-EOF
+  echo "127.0.0.1 mymachine.me" >> /etc/hosts
+  echo "127.0.0.1 openruko.mymachine.me" >> /etc/hosts
+  echo "127.0.0.1 hello-world.mymachine.me" >> /etc/hosts
+  echo "127.0.0.1 keepgreen.mymachine.me" >> /etc/hosts
+  EOF
+
+  not_if "grep 'mymachine.me' /etc/hosts"
+end
+
 template "/etc/profile.d/openruko.sh" do
   source "profile-openruko.erb"
   owner "root"
