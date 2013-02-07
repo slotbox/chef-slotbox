@@ -2,6 +2,13 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/gitmouth; \
-export APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"; \
-./bin/gitmouth >> /var/log/openruko/gitmouth.log 2>&1'
+setuid <%= node['user'] %>
+setgid <%= node['group'] %>
+
+env APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"
+
+chdir <%= node['openruko']['home'] %>/gitmouth
+
+script
+  ./bin/gitmouth >> /var/log/openruko/gitmouth.log 2>&1
+end script

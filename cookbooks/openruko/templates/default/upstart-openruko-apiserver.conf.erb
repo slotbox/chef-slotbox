@@ -2,13 +2,20 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/apiserver; \
-export PG_USER=<%= node['user'] %>; \
-export PG_PASSWORD=<%= node['postgresql']['password'][node['user']] %>
-export S3_HOSTNAME="<%= node['s3']['s3_hostname'] %>";  \
-export S3_PORT="<%= node['s3']['s3_port'] %>";  \
-export S3_KEY="<%= node['s3']['s3_key'] %>";  \
-export S3_SECRET="<%= node['s3']['s3_secret'] %>";  \
-export S3_BUCKET="<%= node['s3']['s3_bucket'] %>";  \
-export APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"; \
-apiserver/bin/apiserver >> /var/log/openruko/apiserver.log 2>&1'
+setuid <%= node['user'] %>
+setgid <%= node['group'] %>
+
+env PG_USER="<%= node['user'] %>"
+env PG_PASSWORD="<%= node['postgresql']['password'][node['user']] %>"
+env S3_HOSTNAME="<%= node['s3']['s3_hostname'] %>"
+env S3_PORT="<%= node['s3']['s3_port'] %>"
+env S3_KEY="<%= node['s3']['s3_key'] %>"
+env S3_SECRET="<%= node['s3']['s3_secret'] %>"
+env S3_BUCKET="<%= node['s3']['s3_bucket'] %>"
+env APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"
+
+chdir <%= node['openruko']['home'] %>/apiserver
+
+script
+  ./apiserver/bin/apiserver >> /var/log/openruko/apiserver.log 2>&1
+end script

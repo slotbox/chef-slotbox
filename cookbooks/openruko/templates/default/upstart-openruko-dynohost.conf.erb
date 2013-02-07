@@ -2,8 +2,12 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - root -c 'cd <%= node['openruko']['home'] %>/dynohost; \
-export RUKORUN_PATH="<%= node['openruko']['home'] %>/rukorun";  \
-export CODONHOOKS_PATH="<%= node['openruko']['home'] %>/codonhooks";  \
-export APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>";  \
-dynohost/bin/dynohost >> /var/log/openruko/dynohost.log 2>&1'
+env RUKORUN_PATH="<%= node['openruko']['home'] %>/rukorun"
+env CODONHOOKS_PATH="<%= node['openruko']['home'] %>/codonhooks"
+env APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"
+
+chdir <%= node['openruko']['home'] %>/dynohost
+
+script
+  ./dynohost/bin/dynohost >> /var/log/openruko/dynohost.log 2>&1
+end script

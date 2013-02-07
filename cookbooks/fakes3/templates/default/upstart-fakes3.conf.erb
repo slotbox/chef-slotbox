@@ -1,10 +1,6 @@
 pre-start script
-
-bash << "EOF"
   touch /var/log/fakes3.log
   chown <%= node['fakes3']['user'] %>. /var/log/fakes3.log
-EOF
-
 end script
 
 start on (started network-interface
@@ -17,5 +13,6 @@ stop on (stopping network-interface
 		 
 respawn
 
-exec su - <%= node['fakes3']['user'] %> -c 'fakes3 -r /tmp/fakes3_root -p 4567 >> /var/log/fakes3.log 2>&1'
-
+script
+  su - <%= node['fakes3']['user'] %> -c 'fakes3 -r /tmp/fakes3_root -p 4567 >> /var/log/fakes3.log 2>&1'
+end script

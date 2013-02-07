@@ -2,5 +2,11 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-exec su - <%= node['user'] %> -c 'cd <%= node['openruko']['home'] %>/logplex; \
-logplex/bin/logplex >> /var/log/openruko/logplex.log 2>&1'
+setuid <%= node['user'] %>
+setgid <%= node['group'] %>
+
+chdir <%= node['openruko']['home'] %>/logplex
+
+script
+  ./logplex/bin/logplex >> /var/log/openruko/logplex.log 2>&1
+end script
