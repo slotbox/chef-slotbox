@@ -63,7 +63,7 @@ else
 
 	sudo mkdir -p /var/log/postgresql
 
-	#gem install --no-rdoc --no-ri chef --version $chef_version
+	gem install --no-rdoc --no-ri chef # --version $chef_version
 	add_rukosan_user
 
 	# rvmsudo is the only way to give chef the needed permissions
