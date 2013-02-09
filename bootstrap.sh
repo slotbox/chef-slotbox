@@ -2,7 +2,7 @@
 
 PATH=$PATH:/var/lib/gems/1.9.1/bin
 
-chef_version="10.16.4"
+chef_version="10.20"
 
 function add_rukosan_user {
 	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan &&
@@ -63,7 +63,7 @@ else
 
 	sudo mkdir -p /var/log/postgresql
 
-	gem install --no-rdoc --no-ri chef # --version $chef_version
+	gem install --no-rdoc --no-ri chef --version $chef_version
 	add_rukosan_user
 
 	# rvmsudo is the only way to give chef the needed permissions
