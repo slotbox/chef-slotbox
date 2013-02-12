@@ -4,8 +4,8 @@ root      = File.expand_path("..", __FILE__)
 solo_json = File.join(root, "solo.json")
 
 Vagrant::Config.run do |config|
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Or use the Travis CI environment to fix Travis-specific buidl failures
   # See http://ruby-journal.com/debug-your-failed-test-in-travis-ci/ for more info
