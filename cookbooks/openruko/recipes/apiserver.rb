@@ -1,7 +1,7 @@
 git "#{node['openruko']['home']}/apiserver" do
   user node['user']
   group node['group']
-  repository "https://github.com/openruko/apiserver.git"
+  repository "https://github.com/slotbox/apiserver.git"
   action :checkout
   revision node["versions"]["apiserver"]
 end

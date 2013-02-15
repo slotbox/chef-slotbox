@@ -8,14 +8,13 @@
       "recipe[git]",
       "recipe[nodejs::install_from_package]",
       "recipe[fakes3]",
-      "recipe[python]",
       "recipe[openruko]",
       "recipe[heroku-toolbelt]"
     ],
 
     "versions" : {
       "apiserver": "master",
-      "client": "master",
+      "client": "0.0.3",
       "codonhooks": "master",
       "dynohost": "master",
       "httprouting": "master",

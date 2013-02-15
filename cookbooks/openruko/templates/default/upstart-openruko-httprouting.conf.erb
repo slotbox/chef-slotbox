@@ -2,12 +2,12 @@ start on starting openruko
 stop on stopping openruko
 respawn
 
-setuid <%= node['user'] %>
-setgid <%= node['group'] %>
+setuid root
+setgid root
 
 env PG_USER=<%= node['user'] %>
 env PG_PASSWORD=<%= node['postgresql']['password'][node['user']] %>
-env HTTPROUTING_PORT=8080
+env HTTPROUTING_PORT=80
 env HTTPROUTING_TLS=true
 
 chdir <%= node['openruko']['home'] %>/httprouting

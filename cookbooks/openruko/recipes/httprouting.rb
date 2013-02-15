@@ -1,7 +1,7 @@
 git "#{node['openruko']['home']}/httprouting" do
   user node['user']
   group node['group']
-  repository "https://github.com/Filirom1/httprouting.git"
+  repository "https://github.com/slotbox/httprouting.git"
   action :checkout
   revision node["versions"]["httprouting"]
 end

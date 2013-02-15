@@ -14,16 +14,14 @@ directory node['openruko']['home'] do
   mode 0755
 end
 
-bash "setup mymachine.me domain" do
-  user "root"
+bash "setup-slotbox.local-domain" do
+  user  "root"
   code <<-EOF
-  echo "127.0.0.1 mymachine.me" >> /etc/hosts
-  echo "127.0.0.1 openruko.mymachine.me" >> /etc/hosts
-  echo "127.0.0.1 hello-world.mymachine.me" >> /etc/hosts
-  echo "127.0.0.1 keepgreen.mymachine.me" >> /etc/hosts
+  echo "127.0.0.1 slotbox.local" >> /etc/hosts
+  echo "127.0.0.1 slotbox-nodejs-hello-world.slotbox.local" >> /etc/hosts
   EOF
 
-  not_if "grep 'mymachine.me' /etc/hosts"
+  not_if "grep 'slotbox\.local' /etc/hosts"
 end
 
 template "/etc/profile.d/openruko.sh" do
@@ -46,7 +44,6 @@ include_recipe "openruko::dynohost"
 include_recipe "openruko::logplex"
 include_recipe "openruko::rukorun"
 include_recipe "openruko::codonhooks"
-include_recipe "openruko::gitmouth"
 include_recipe "openruko::client"
 include_recipe "openruko::integration-tests"
 
