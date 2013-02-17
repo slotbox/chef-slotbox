@@ -12,7 +12,7 @@ To generate a new VirtualBox VM with OpenRuko and all its dependencies already i
 ```
 $ sudo apt-get install vagrant
 $ git clone https://github.com/openruko/vagrant-openruko.git
-$ cd chef-openruko
+$ cd vagrant-openruko
 $ vagrant up
 # wait ...
 ```
@@ -23,7 +23,7 @@ This has been tested on vanilla installs of Ubuntu 12.04 64bit. So fire up a rem
 
 ```
 $ git clone https://github.com/openruko/vagrant-openruko.git
-$ cd chef-openruko
+$ cd vagrant-openruko
 $ ./deploy.sh root@<host>
 # wait ...
 ```
