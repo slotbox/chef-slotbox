@@ -3,5 +3,5 @@ git "#{node['openruko']['home']}/codonhooks" do
   group node['group']
   repository "https://github.com/slotbox/codonhooks.git"
   action :checkout
-  revision node["versions"]["codonhooks"]
+  revision "v" + node["versions"]["codonhooks"]
 end

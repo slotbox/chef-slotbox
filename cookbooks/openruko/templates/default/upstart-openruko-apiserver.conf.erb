@@ -14,6 +14,16 @@ env S3_SECRET="<%= node['s3']['s3_secret'] %>"
 env S3_BUCKET="<%= node['s3']['s3_bucket'] %>"
 env APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"
 
+<%
+  if File.readlines("/etc/passwd").grep(/vagrant|travis/).any?
+    base_domain = node['openruko']['dev_domain']
+  else
+    base_domain = node['openruko']['live_domain']
+  end
+%>
+
+export OPENRUKO_HOST=<%= base_domain %>
+
 chdir <%= node['openruko']['home'] %>/apiserver
 
 script

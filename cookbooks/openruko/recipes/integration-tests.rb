@@ -3,5 +3,5 @@ git "#{node['openruko']['home']}/integration-tests" do
   group node['group']
   repository "git://github.com/slotbox/integration-tests.git"
   action :checkout
-  revision node["versions"]["integration-tests"]
+  revision "v" + node["versions"]["integration-tests"]
 end

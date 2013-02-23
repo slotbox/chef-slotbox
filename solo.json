@@ -13,15 +13,14 @@
     ],
 
     "versions" : {
-      "apiserver": "master",
+      "apiserver": "0.1.1",
       "client": "0.0.3",
-      "codonhooks": "master",
-      "dynohost": "master",
-      "httprouting": "master",
-      "integration-tests": "master",
-      "logplex": "master",
-      "gitmouth": "master",
-      "rukorun": "master"
+      "codonhooks": "0.1.1",
+      "dynohost": "0.1.1",
+      "httprouting": "0.1.0",
+      "integration-tests": "0.1.1",
+      "logplex": "0.1.0",
+      "rukorun": "0.1.1"
     },
 
     "user": "rukosan",
@@ -31,7 +30,9 @@
     "openruko": {
       "home": "/home/rukosan/openruko",
       "passsword": "rukosan",
-      "apiserver_key": "ec1a8eb9-18a6-42c2-81ec-c0f0f615280c"
+      "apiserver_key": "ec1a8eb9-18a6-42c2-81ec-c0f0f615280c",
+      "dev_domain": "slotbox.local",
+      "live_domain": "slotbox.es"
     },
 
     "s3": {

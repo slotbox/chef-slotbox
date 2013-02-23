@@ -3,7 +3,7 @@ git "#{node['openruko']['home']}/logplex" do
   group node['group']
   repository "https://github.com/openruko/logplex.git"
   action :checkout
-  revision node["versions"]["logplex"]
+  revision "v" + node["versions"]["logplex"]
 end
 
 bash "setup-logplex" do
