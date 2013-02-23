@@ -13,12 +13,12 @@
     ],
 
     "versions" : {
-      "apiserver": "v0.1.1",
+      "apiserver": "v0.1.2",
       "client": "0.0.3",
       "codonhooks": "v0.1.1",
       "dynohost": "v0.1.1",
       "httprouting": "v0.1.0",
-      "integration-tests": "v0.1.1",
+      "integration-tests": "v0.1.2",
       "logplex": "v0.1.0",
       "rukorun": "v0.1.1"
     },
