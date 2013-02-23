@@ -11,5 +11,6 @@ data['versions'].each do |repo, version|
   data['versions'][repo] = 'master' unless repo == 'client'
 end
 
-IO.write(file, data)
-
+File.open(file,"w") do |f|
+  f.write(data.to_json)
+end
