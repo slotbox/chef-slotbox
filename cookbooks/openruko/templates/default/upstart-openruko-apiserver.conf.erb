@@ -22,7 +22,7 @@ env APISERVER_KEY="<%= node['openruko']['apiserver_key'] %>"
   end
 %>
 
-export OPENRUKO_HOST=<%= base_domain %>
+env OPENRUKO_HOST=<%= base_domain %>
 
 chdir <%= node['openruko']['home'] %>/apiserver
 
