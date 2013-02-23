@@ -13,14 +13,14 @@
     ],
 
     "versions" : {
-      "apiserver": "0.1.1",
+      "apiserver": "v0.1.1",
       "client": "0.0.3",
-      "codonhooks": "0.1.1",
-      "dynohost": "0.1.1",
-      "httprouting": "0.1.0",
-      "integration-tests": "0.1.1",
-      "logplex": "0.1.0",
-      "rukorun": "0.1.1"
+      "codonhooks": "v0.1.1",
+      "dynohost": "v0.1.1",
+      "httprouting": "v0.1.0",
+      "integration-tests": "v0.1.1",
+      "logplex": "v0.1.0",
+      "rukorun": "v0.1.1"
     },
 
     "user": "rukosan",

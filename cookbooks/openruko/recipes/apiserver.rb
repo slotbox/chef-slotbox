@@ -3,7 +3,7 @@ git "#{node['openruko']['home']}/apiserver" do
   group node['group']
   repository "https://github.com/slotbox/apiserver.git"
   action :checkout
-  revision "v" + node["versions"]["apiserver"]
+  revision node["versions"]["apiserver"]
 end
 
 bash "setup-apiserver" do

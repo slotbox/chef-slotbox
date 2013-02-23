@@ -3,7 +3,7 @@ git "#{node['openruko']['home']}/httprouting" do
   group node['group']
   repository "https://github.com/slotbox/httprouting.git"
   action :checkout
-  revision "v" + node["versions"]["httprouting"]
+  revision node["versions"]["httprouting"]
 end
 
 bash "setup-httprouting" do

@@ -3,7 +3,7 @@ git "#{node['openruko']['home']}/dynohost" do
   group node['group']
   repository "https://github.com/slotbox/dynohost.git"
   action :checkout
-  revision "v" + node["versions"]["dynohost"]
+  revision node["versions"]["dynohost"]
 end
 
 bash "setup-dynohost" do
