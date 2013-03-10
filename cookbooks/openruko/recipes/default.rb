@@ -6,7 +6,17 @@ package "postgresql-server-dev-9.1"
 package "postgresql-contrib-9.1"
 package "uuid-dev"
 package "libssl0.9.8"
-package "lxc"
+# For some reason LXC won't install via chef, it seems to be this particular command
+# `apt-get -q -y install lxc=0.7.5-3ubuntu67' that fails, this could be a temporary issue,
+# but for now let's just install with straight up bash isntead.
+#package "lxc"
+bash "setup mymachine.me domain" do
+  user "root"
+  code <<-EOF
+  apt-get install lxc
+  EOF
+end
+
 
 directory node['openruko']['home'] do
   user node['user']
