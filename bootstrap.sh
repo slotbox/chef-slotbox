@@ -55,7 +55,7 @@ if [ "$TRAVIS" != "true" ]; then
 else
 
 	echo "Travis CI environment detected."
-  sudo aptitude update
+  sudo apt-get update
 
 	# Remove exsiting Postgres installation
 	sudo /etc/init.d/postgresql stop
