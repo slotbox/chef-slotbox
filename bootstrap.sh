@@ -61,7 +61,7 @@ else
 	add_rukosan_user
 
 	# rvmsudo is the only way to give chef the needed permissions
-	sudo_command=rvmsudo
+	sudo_command=sudo
 fi
 
 $sudo_command chef-solo -c solo.rb -j solo.json
