@@ -1,4 +1,0 @@
-language: bash
-before_script: source bootstrap.sh
-script: sudo su - rukosan -c "cd /home/rukosan/openruko/integration-tests &&  ./run.sh"
-

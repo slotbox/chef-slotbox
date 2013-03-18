@@ -57,7 +57,7 @@ else
 	echo "Drone IO environment detected."
   	sudo apt-get update
 
-	gem install --no-rdoc --no-ri chef --version $chef_version
+	sudo gem install --no-rdoc --no-ri chef --version $chef_version
 	add_rukosan_user
 
 	# rvmsudo is the only way to give chef the needed permissions
