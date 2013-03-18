@@ -9,7 +9,7 @@ function add_rukosan_user {
 	sudo su - -c "echo \"rukosan ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
-if [ "$TRAVIS" != "true" ]; then
+if [ "$DRONEIO" != "true" ]; then
 
 	# Are we on a vanilla system?
 	if (! command -v chef-solo >/dev/null 2>&1) || (! chef-solo --version | grep $chef_version); then
@@ -54,14 +54,8 @@ if [ "$TRAVIS" != "true" ]; then
 
 else
 
-	echo "Travis CI environment detected."
-  sudo aptitude update
-
-	# Remove exsiting Postgres installation
-	sudo /etc/init.d/postgresql stop
-	sudo apt-get --force-yes -fuy remove --purge postgresql postgresql-9.1 postgresql-client
-
-	sudo mkdir -p /var/log/postgresql
+	echo "Drone IO environment detected."
+  	sudo apt-get update
 
 	gem install --no-rdoc --no-ri chef --version $chef_version
 	add_rukosan_user
