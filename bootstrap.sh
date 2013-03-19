@@ -58,6 +58,8 @@ else
   	sudo apt-get update
 
 	sudo gem install --no-rdoc --no-ri chef --version $chef_version
+	sudo uname -a
+	sudo cat /etc/sudoers
 	add_rukosan_user
 
 	# rvmsudo is the only way to give chef the needed permissions
