@@ -6,7 +6,7 @@ chef_version="10.20"
 
 function add_rukosan_user {
 	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan &&
-	sudo su - -c "echo \"rukosan ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
+	sudo su - -c "echo \"\nrukosan ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
 if [ "$DRONEIO" != "true" ]; then
