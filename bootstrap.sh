@@ -60,8 +60,8 @@ else
 	sudo gem install --no-rdoc --no-ri chef --version $chef_version
 	# Get rid of extraneous "ubuntu ALL=NOPASSWD: ALL" lines so editing sudoers doesn't error
 	pattern='ubuntu\ ALL\=NOPASSWD\:\ ALL'
-	sudo sed -i 0,/$pattern/s/$pattern// /etc/sudoers
-	sudo sed -i 0,/$pattern/s/$pattern// /etc/sudoers
+	sudo sed -i "0,/$pattern/s/$pattern//" /etc/sudoers
+	sudo sed -i "0,/$pattern/s/$pattern//" /etc/sudoers
 
 	add_rukosan_user
 
