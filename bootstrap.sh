@@ -59,7 +59,7 @@ else
 
 	sudo gem install --no-rdoc --no-ri chef --version $chef_version
 	# Get rid of extraneous "ubuntu ALL=NOPASSWD: ALL" lines so editing sudoers doesn't error
-	sudo awk '! a[$0]++' /etc/sudoers > /tmp/sudoers && cat /tmp/sudoers > /etc/sudoers
+	sudo awk '! a[$0]++' /etc/sudoers > /tmp/sudoers && sudo cat /tmp/sudoers > /etc/sudoers
 
 	add_rukosan_user
 
