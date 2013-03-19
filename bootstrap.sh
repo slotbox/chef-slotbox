@@ -6,7 +6,7 @@ chef_version="10.20"
 
 function add_rukosan_user {
 	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan &&
-	sudo su - -c "echo \"\nrukosan ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
+	sudo su - -c "echo \"\nrukosan ALL=NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
 if [ "$DRONEIO" != "true" ]; then
@@ -58,8 +58,6 @@ else
   	sudo apt-get update
 
 	sudo gem install --no-rdoc --no-ri chef --version $chef_version
-	sudo uname -a
-	sudo cat /etc/sudoers
 	add_rukosan_user
 
 	# rvmsudo is the only way to give chef the needed permissions
