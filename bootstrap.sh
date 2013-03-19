@@ -57,11 +57,15 @@ else
 	echo "Drone IO environment detected."
   	sudo apt-get update
 
-	sudo gem install --no-rdoc --no-ri chef --version $chef_version
+	sudo gem install --no-rdoc --no-ri chef --version $chef_version 
+	sudo ls -al /etc/sudoers
 	add_rukosan_user
+	sudo ls -al /etc/sudoers
 
 	# rvmsudo is the only way to give chef the needed permissions
 	sudo_command=sudo
 fi
+
+sudo cat /etc/sudoers
 
 $sudo_command chef-solo -c solo.rb -j solo.json
