@@ -59,7 +59,7 @@ else
 
 	# Remove exsiting Postgres installation
 	sudo /etc/init.d/postgresql stop
-	sudo apt-get --force-yes -fuy remove --purge postgresql postgresql-9.1 postgresql-client
+	sudo apt-get --force-yes -fuy remove --purge postgresql postgresql-9.1 postgresql-client lxc
 
 	sudo mkdir -p /var/log/postgresql
 
