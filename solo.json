@@ -7,20 +7,26 @@
       "recipe[postgresql::server]",
       "recipe[git]",
       "recipe[nodejs::install_from_package]",
+      "recipe[openruko::default]",
+      "recipe[openruko::apiserver]",
+      "recipe[openruko::logplex]",
+      "recipe[openruko::httprouting]",
+      "recipe[openruko::client]",
+      "recipe[openruko::integration-tests]",
+      "recipe[openruko::dynohost]",
       "recipe[fakes3]",
-      "recipe[openruko]",
       "recipe[heroku-toolbelt]"
     ],
 
     "versions" : {
-      "apiserver": "v0.1.2",
+      "apiserver": "v0.1.3",
       "client": "0.0.3",
       "codonhooks": "v0.1.1",
-      "dynohost": "v0.1.1",
-      "httprouting": "v0.1.0",
-      "integration-tests": "v0.1.2",
+      "dynohost": "v0.1.2",
+      "httprouting": "v0.1.1",
+      "integration-tests": "v0.1.3",
       "logplex": "v0.1.0",
-      "rukorun": "v0.1.1"
+      "rukorun": "v0.1.2"
     },
 
     "user": "rukosan",
@@ -32,6 +38,8 @@
       "home": "/home/rukosan/openruko",
       "passsword": "rukosan",
       "apiserver_key": "ec1a8eb9-18a6-42c2-81ec-c0f0f615280c",
+      "apiserver_host": "openruko.local",
+      "apiserver_ip": "127.0.0.1",
       "dev_domain": "slotbox.local",
       "live_domain": "slotbox.es"
     },
@@ -40,7 +48,7 @@
       "s3_key": "123",
       "s3_secret": "123",
       "s3_bucket": "openruko",
-      "s3_hostname": "mymachine.me",
+      "s3_hostname": "openruko.local",
       "s3_port": "4567"
     },
 
@@ -63,8 +71,10 @@
     },
 
     "nodejs": {
+
       "version": "0.8.6",
       "npm": "1.1.48",
       "legacy_packages": true
     }
+
 }

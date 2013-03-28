@@ -1,11 +1,9 @@
 # Default repos to clone openruko parts
 
-default['openruko']['repositories']['apiserver']   = "https://github.com/openruko/apiserver.git"
-default['openruko']['repositories']['client']      = "https://github.com/openruko/client.git"
-default['openruko']['repositories']['codonhooks']  = "https://github.com/openruko/codonhooks.git"
-default['openruko']['repositories']['dynohost']    = "https://github.com/openruko/dynohost.git"
-default['openruko']['repositories']['gitmouth']    = "https://github.com/openruko/gitmouth.git"
-default['openruko']['repositories']['httprouting'] = "https://github.com/Filirom1/httprouting.git"
-default['openruko']['repositories']['logplex']     = "https://github.com/openruko/logplex.git"
-default['openruko']['repositories']['rukorun']     = "https://github.com/openruko/rukorun.git"
-default['openruko']['repositories']['integration-tests'] = "https://github.com/openruko/integration-tests.git"
+default['openruko']['repositories']['apiserver']   = "git://github.com/slotbox/apiserver.git"
+default['openruko']['repositories']['codonhooks']  = "git://github.com/slotbox/codonhooks.git"
+default['openruko']['repositories']['dynohost']    = "git://github.com/slotbox/dynohost.git"
+default['openruko']['repositories']['httprouting'] = "git://github.com/slotbox/httprouting.git"
+default['openruko']['repositories']['logplex']     = "git://github.com/openruko/logplex.git"
+default['openruko']['repositories']['rukorun']     = "git://github.com/slotbox/rukorun.git"
+default['openruko']['repositories']['integration-tests'] = "git://github.com/slotbox/integration-tests.git"
