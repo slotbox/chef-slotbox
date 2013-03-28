@@ -11,8 +11,8 @@ To generate a new VirtualBox VM with OpenRuko and all its dependencies already i
 
 ```
 $ sudo apt-get install vagrant
-$ git clone https://github.com/openruko/chef-openruko.git
-$ cd chef-openruko
+$ git clone https://github.com/openruko/vagrant-openruko.git
+$ cd vagrant-openruko
 $ vagrant up
 # wait ...
 ```
@@ -22,8 +22,8 @@ $ vagrant up
 This has been tested on vanilla installs of Ubuntu 12.04 64bit. So fire up a remote instance then on your local machine;
 
 ```
-$ git clone https://github.com/openruko/chef-openruko.git
-$ cd chef-openruko
+$ git clone https://github.com/openruko/vagrant-openruko.git
+$ cd vagrant-openruko
 $ ./deploy.sh root@<host>
 # wait ...
 ```
@@ -61,8 +61,8 @@ var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+}).listen(process.env.PORT);
+console.log('Server running');
 EOF
 
 $ cat > Procfile << EOF
@@ -77,6 +77,6 @@ $ ~/openruko/client/openruko create myapp
 # Password: rukosan
 
 $ git push heroku master
-$ curl 127.0.0.1:1337
+$ curl http://myapp.mymachine.me:8080/
 ```
 

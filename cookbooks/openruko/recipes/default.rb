@@ -14,14 +14,15 @@ directory node['openruko']['home'] do
   mode 0755
 end
 
-bash "setup-slotbox.local-domain" do
-  user  "root"
+bash "setup #{node['openruko']['host']} domain" do
+  user "root"
   code <<-EOF
-  echo "127.0.0.1 slotbox.local" >> /etc/hosts
+  echo "127.0.0.1 #{node['openruko']['host']}" >> /etc/hosts
+  echo "127.0.0.1 openruko.#{node['openruko']['host']}" >> /etc/hosts
   echo "127.0.0.1 slotbox-nodejs-hello-world.slotbox.local" >> /etc/hosts
   EOF
 
-  not_if "grep 'slotbox\.local' /etc/hosts"
+  not_if "grep '#{node['openruko']['host']}' /etc/hosts"
 end
 
 template "/etc/profile.d/openruko.sh" do

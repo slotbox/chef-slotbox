@@ -1,3 +1,4 @@
+
 script "install-slotbox-cli" do
   interpreter "bash"
 
