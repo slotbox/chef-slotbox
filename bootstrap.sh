@@ -67,5 +67,6 @@ else
 
 fi
 
-sudo su - -c "sudo chef-solo -c solo.rb -j solo.json"
+dir=$(pwd)
+sudo su - -c "cd $dir chef-solo -c solo.rb -j solo.json"
 
