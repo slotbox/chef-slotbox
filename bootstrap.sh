@@ -61,7 +61,7 @@ else
 		# then root will own /home/rukosan and chef will complain about permission issues.
 		sudo chown rukosan:rukosan /home/rukosan
 
-	fi &&
+	fi
 
 fi
 
