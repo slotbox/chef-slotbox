@@ -15,6 +15,7 @@ if [ "$DRONEIO" = "true" ]; then
 
 	echo "Drone IO environment detected."
   sudo apt-get update
+	sudo echo "127.0.0.1 $(cat /etc/hostname)" >> /etc/hosts
 
 	sudo gem install --no-rdoc --no-ri chef --version $chef_version
 	# Get rid of extraneous "ubuntu ALL=NOPASSWD: ALL" lines so editing sudoers doesn't error
@@ -22,7 +23,6 @@ if [ "$DRONEIO" = "true" ]; then
 
 	add_rukosan_user
 
-	sudo echo "127.0.0.1 $(cat /etc/hostname)" >> /etc/hosts
 
 else
 
