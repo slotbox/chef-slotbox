@@ -9,10 +9,10 @@ package "curl"
 package "wget"
 package "ruby1.9.1"
 
-chef_handler "Openruko::TailLogs" do
-  source "cookbooks/openruko/tail_logs_handler.rb"
-  action :enable
-end
+# Tail logs on build failure
+require "cookbooks/openruko/tail_logs_handler.rb"
+exception_handlers << Openruko::TailLogs.new
+
 
 bash "setup-local-domains" do
   user  "root"
