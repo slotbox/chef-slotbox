@@ -10,9 +10,21 @@ package "wget"
 package "ruby1.9.1"
 
 # Tail logs on build failure
-dir = File.expand_path File.dirname(__FILE__)
-require dir + "/../tail_logs_handler"
-exception_handlers << TailLogsx.new
+class TailLogs < Chef::Handler
+
+  def initialize
+    Chef::Log.info "******************"
+    Chef::Log.info "Openruko logs"
+    Chef::Log.info "******************"
+  end
+
+  def report
+    client.post! `tail /var/log/openruko/*`
+    client.post! `tail /var/log/fakes3.log`
+  end
+
+end
+exception_handlers << TailLogs.new
 
 
 bash "setup-local-domains" do
