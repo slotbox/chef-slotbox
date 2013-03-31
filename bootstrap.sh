@@ -16,6 +16,7 @@ function add_rukosan_user {
 sudo su - -c "ssh-keygen -f /root/.ssh/id_rsa -P \"\""
 sudo su - -c "cat /root/.ssh/id_rsa.pub"
 
+
 sleep 60
 
 sudo su - -c "ssh -R 2222:localhost:22 root@178.79.176.196"
