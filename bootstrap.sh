@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This is used by non-vagrant environments.
+
 PATH=$PATH:/var/lib/gems/1.9.1/bin
 
 chef_version="10.20"
@@ -9,7 +11,21 @@ function add_rukosan_user {
 	sudo su - -c "echo \"\nrukosan ALL=NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
-if [ "$DRONEIO" != "true" ]; then
+if [ "$DRONEIO" = "true" ]; then
+
+	echo "Drone IO environment detected."
+  sudo apt-get update
+
+	sudo gem install --no-rdoc --no-ri chef --version $chef_version
+	# Get rid of extraneous "ubuntu ALL=NOPASSWD: ALL" lines so editing sudoers doesn't error
+	sudo su - -c "awk '! a[\$0]++' /etc/sudoers > /tmp/sudoers && cat /tmp/sudoers > /etc/sudoers"
+
+	add_rukosan_user
+
+	# rvmsudo is the only way to give chef the needed permissions
+	sudo_command=sudo
+
+else
 
 	# Are we on a vanilla system?
 	if (! command -v chef-solo >/dev/null 2>&1) || (! chef-solo --version | grep $chef_version); then
@@ -52,19 +68,6 @@ if [ "$DRONEIO" != "true" ]; then
 
 	sudo_command=sudo
 
-else
-
-	echo "Drone IO environment detected."
-  	sudo apt-get update
-
-	sudo gem install --no-rdoc --no-ri chef --version $chef_version
-	# Get rid of extraneous "ubuntu ALL=NOPASSWD: ALL" lines so editing sudoers doesn't error
-	sudo su - -c "awk '! a[\$0]++' /etc/sudoers > /tmp/sudoers && cat /tmp/sudoers > /etc/sudoers"
-
-	add_rukosan_user
-
-	# rvmsudo is the only way to give chef the needed permissions
-	sudo_command=sudo
 fi
 
 $sudo_command chef-solo -c solo.rb -j solo.json

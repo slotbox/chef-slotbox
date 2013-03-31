@@ -1,7 +1,19 @@
+package "expect"
+package "socat"
+package "postgresql-server-dev-9.1"
+package "postgresql-contrib-9.1"
+
+bash "setup-ruby" do
+  code <<-EOF
+  sudo update-alternatives --set ruby /usr/bin/ruby1.9.1
+  sudo update-alternatives --set gem /usr/bin/gem1.9.1
+  EOF
+end
+
 git "#{node['openruko']['home']}/apiserver" do
   user node['user']
   group node['group']
-  repository "https://github.com/slotbox/apiserver.git"
+  repository node['openruko']['repositories']['apiserver']
   action :checkout
   revision node["versions"]["apiserver"]
 end
@@ -40,4 +52,17 @@ template "/etc/init/openruko-apiserver.conf" do
   owner "root"
   group "root"
   mode 0644
+end
+
+template "/etc/profile.d/openruko-apiserver.sh" do
+  source "profile-openruko-apiserver.erb"
+  owner "root"
+  group "root"
+  mode 0755
+end
+
+service "openruko-apiserver" do
+  provider Chef::Provider::Service::Upstart
+  supports :restart => true, :start => true, :stop => true
+  action [:enable, :start]
 end
