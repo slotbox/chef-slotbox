@@ -67,9 +67,5 @@ else
 
 fi
 
-# sudo chef-solo -c solo.rb -j solo.json
-sudo ls -al /etc/init/
-sudo su - -c "ls -al /etc/init/"
-ls -al /etc/init/
-
+sudo chef-solo -c solo.rb -j solo.json
 
