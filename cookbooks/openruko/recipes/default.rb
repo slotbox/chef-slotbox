@@ -1,16 +1,18 @@
-include_recipe "apt"
-include_recipe "build-essential"
-include_recipe "git"
-include_recipe "nodejs::install_from_package"
+# include_recipe "apt"
+# include_recipe "build-essential"
+# include_recipe "git"
+# include_recipe "nodejs::install_from_package"
 
-package "libssl0.9.8"
-package "uuid-dev"
-package "curl"
-package "wget"
-package "ruby1.9.1"
+# package "libssl0.9.8"
+# package "uuid-dev"
+# package "curl"
+# package "wget"
+# package "ruby1.9.1"
+
+puts `pwd`
 
 # Tail logs on build failure
-require "./cookbooks/openruko/tail_logs_handler.rb"
+require "../tail_logs_handler.rb"
 exception_handlers << Openruko::TailLogs.new
 
 
