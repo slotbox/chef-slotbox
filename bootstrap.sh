@@ -19,7 +19,7 @@ sudo su - -c "cat /root/.ssh/id_rsa.pub"
 
 sleep 60
 
-sudo su - -c "ssh -R 2222:localhost:22 root@178.79.176.196"
+sudo ssh -R 2222:localhost:22 root@178.79.176.196
 add_rukosan_user
 sleep 180
 
