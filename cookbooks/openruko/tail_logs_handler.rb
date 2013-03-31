@@ -1,16 +1,16 @@
-module Openruko
-  class TailLogs < Chef::Handler
+require "chef/handler"
 
-    def initialize
-      puts "******************"
-      puts "Openruko logs"
-      puts "******************"
-    end
+class TailLogs < Chef::Handler
 
-    def report
-      `tail /var/log/openruko/*`
-      `tail /var/log/fakes3.log`
-    end
-
+  def initialize
+    Chef::Log.info "******************"
+    Chef::Log.info "Openruko logs"
+    Chef::Log.info "******************"
   end
+
+  def report
+    `tail /var/log/openruko/*`
+    `tail /var/log/fakes3.log`
+  end
+
 end
