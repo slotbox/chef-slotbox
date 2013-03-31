@@ -7,7 +7,7 @@ PATH=$PATH:/var/lib/gems/1.9.1/bin
 chef_version="10.20"
 
 function add_rukosan_user {
-	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan -p \`openssl passwd -1 rukosan\` &&
+	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan -p $(openssl passwd -1 rukosan) &&
 	sudo su - -c "echo \"\nrukosan ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
