@@ -68,5 +68,5 @@ else
 fi
 
 dir=$(pwd)
-sudo su - -c "cd $dir chef-solo -c solo.rb -j solo.json"
+sudo su - -c "cd $dir && chef-solo -c solo.rb -j solo.json"
 
