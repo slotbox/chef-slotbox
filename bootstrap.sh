@@ -8,6 +8,7 @@ chef_version="10.20"
 
 function add_rukosan_user {
 	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan &&
+	sudo su - -c "echo rukosan | passwd rukosan --stdin" &&
 	sudo su - -c "echo \"\nrukosan ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
@@ -20,9 +21,9 @@ if [ "$DRONEIO" = "true" ]; then
 	# Get rid of extraneous "ubuntu ALL=NOPASSWD: ALL" lines so editing sudoers doesn't error
 	sudo su - -c "awk '! a[\$0]++' /etc/sudoers > /tmp/sudoers && cat /tmp/sudoers > /etc/sudoers"
 
-	add_rukosan_user
-
 	sudo su - -c "echo \"127.0.0.1 $(cat /etc/hostname)\" >> /etc/hosts"
+
+	add_rukosan_user
 
 else
 
