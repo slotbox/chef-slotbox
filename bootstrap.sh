@@ -15,7 +15,7 @@ function add_rukosan_user {
 
 sudo su - -c "cat /etc/ssh/sshd_config"
 sudo su - -c "sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config"
-sudo su - -c "service sshd restart"
+sudo su - -c "service ssh restart"
 curl jsonip.com
 add_rukosan_user
 sleep 120
