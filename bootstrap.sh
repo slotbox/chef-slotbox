@@ -22,9 +22,6 @@ if [ "$DRONEIO" = "true" ]; then
 
 	add_rukosan_user
 
-	# rvmsudo is the only way to give chef the needed permissions
-	sudo_command=sudo
-
 else
 
 	# Are we on a vanilla system?
@@ -66,8 +63,6 @@ else
 
 	fi &&
 
-	sudo_command=sudo
-
 fi
 
-$sudo_command chef-solo -c solo.rb -j solo.json
+sudo chef-solo -c solo.rb -j solo.json

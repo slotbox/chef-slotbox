@@ -9,6 +9,7 @@ class TailLogs < Chef::Handler
   end
 
   def report
+    `sudo /sbin/start openruko-apiserver`
     `tail /var/log/openruko/*`
     `tail /var/log/fakes3.log`
   end
