@@ -11,9 +11,10 @@ package "ruby1.9.1"
 
 # Tail logs on build failure
 dir = File.expand_path File.dirname(__FILE__)
-require dir + "/../tail_logs_handler.rb"
-exception_handlers << Openruko::TailLogs.new
-
+chef_handler "Openruko::TailLogs" do
+  source dir + "/../tail_logs_handler.rb"
+  action :enable
+end
 
 bash "setup-local-domains" do
   user  "root"
