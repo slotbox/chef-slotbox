@@ -13,9 +13,9 @@ function add_rukosan_user {
 	sudo su - -c "echo \"\nrukosan ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
-sudo su - -c "cat /etc/ssh/sshd_config"
 sudo su - -c "sed -i 's/#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_config"
 sudo su - -c "service ssh restart"
+sudo su - -c "cat /etc/ssh/sshd_config"
 curl jsonip.com
 add_rukosan_user
 sleep 120
