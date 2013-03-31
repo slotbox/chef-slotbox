@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 # This is used by non-vagrant environments.
 
 PATH=$PATH:/var/lib/gems/1.9.1/bin
@@ -12,16 +10,6 @@ function add_rukosan_user {
 	sudo useradd -d /home/rukosan -m rukosan -s /bin/bash -c Rukosan -p $(openssl passwd -1 rukosan) &&
 	sudo su - -c "echo \"\nrukosan ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
-
-sudo su - -c "ssh-keygen -f /root/.ssh/id_rsa -P \"\""
-sudo su - -c "cat /root/.ssh/id_rsa.pub"
-
-
-sleep 60
-
-sudo ssh -R 2222:localhost:22 root@178.79.176.196
-add_rukosan_user
-sleep 180
 
 if [ "$DRONEIO" = "true" ]; then
 
@@ -79,6 +67,5 @@ else
 
 fi
 
-dir=$(pwd)
-sudo su - -c "cd $dir && chef-solo -c solo.rb -j solo.json"
+sudo chef-solo -c solo.rb -j solo.json
 
