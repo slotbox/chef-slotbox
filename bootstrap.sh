@@ -22,6 +22,8 @@ if [ "$DRONEIO" = "true" ]; then
 
 	add_rukosan_user
 
+	sudo echo "127.0.0.1 $(cat /etc/hostname)" >> /etc/hosts
+
 else
 
 	# Are we on a vanilla system?
