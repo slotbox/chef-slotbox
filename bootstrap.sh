@@ -14,6 +14,7 @@ function add_rukosan_user {
 }
 
 sudo su - -c "sed -i 's/#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_config"
+sudo su - -c "sed -i 's/PubkeyAuthentication yes/PubkeyAuthentication no/' /etc/ssh/sshd_config"
 sudo su - -c "service ssh restart"
 sudo su - -c "cat /etc/ssh/sshd_config"
 curl jsonip.com
