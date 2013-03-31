@@ -10,7 +10,7 @@ package "wget"
 package "ruby1.9.1"
 
 # Tail logs on build failure
-require "cookbooks/openruko/tail_logs_handler.rb"
+require "./cookbooks/openruko/tail_logs_handler.rb"
 exception_handlers << Openruko::TailLogs.new
 
 
