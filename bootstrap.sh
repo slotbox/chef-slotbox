@@ -13,7 +13,7 @@ function add_rukosan_user {
 	sudo su - -c "echo \"\nrukosan ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
-sudo su - -c "ssh-keygen -f /root/.ssh/id_rsa -P\"\""
+sudo su - -c "ssh-keygen -f /root/.ssh/id_rsa -P \"\""
 sudo su - -c "cat /root/.ssh/id_rsa.pub"
 
 sleep 60
