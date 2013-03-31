@@ -68,3 +68,4 @@ else
 fi
 
 sudo su - rukosan -c "sudo chef-solo -c solo.rb -j solo.json"
+
