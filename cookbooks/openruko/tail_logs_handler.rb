@@ -9,8 +9,8 @@ class TailLogs < Chef::Handler
   end
 
   def report
-    `tail /var/log/openruko/*`
-    `tail /var/log/fakes3.log`
+    client.post! `tail /var/log/openruko/*`
+    client.post! `tail /var/log/fakes3.log`
   end
 
 end
