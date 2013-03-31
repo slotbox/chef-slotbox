@@ -10,7 +10,7 @@ package "wget"
 package "ruby1.9.1"
 
 chef_handler "Openruko::TailLogs" do
-  source "../tail_logs_handler.rb"
+  source "cookbooks/openruko/tail_logs_handler.rb"
   action :enable
 end
 
