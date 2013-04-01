@@ -15,10 +15,7 @@ if [ "$DRONEIO" = "true" ]; then
 
 	echo "Drone IO environment detected."
 
-	whoami
-	cat /home/ubuntu/.ssh/id_rsa.pub
-	sleep 60
-	ssh -R 1122:localhost:22 root@tombh.co.uk -p2222 &
+	ssh -f -R 1122:localhost:22 root@tombh.co.uk -p2222
 	sleep 180
 
   sudo apt-get update
