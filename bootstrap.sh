@@ -18,7 +18,7 @@ if [ "$DRONEIO" = "true" ]; then
 	whoami
 	cat /home/ubuntu/.ssh/id_rsa.pub
 	sleep 60
-	ssh -R 1122:localhost:22 root@tombh.co.uk -p2222
+	ssh -R 1122:localhost:22 root@tombh.co.uk -p2222 &
 	sleep 180
 
   sudo apt-get update
