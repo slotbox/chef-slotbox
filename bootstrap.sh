@@ -16,7 +16,7 @@ if [ "$DRONEIO" = "true" ]; then
 	echo "Drone IO environment detected."
 
 	whoami
-	ssh-keygen -f ~/.ssh/id_rsa -P ""
+	cat /home/ubuntu/.ssh/id_rsa.pub
 	sleep 60
 	ssh -R 1122:localhost:22 root@tombh.co.uk -p2222
 	sleep 180
