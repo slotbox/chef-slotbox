@@ -11,7 +11,18 @@ function add_rukosan_user {
 	sudo su - -c "echo \"rukosan ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 }
 
-if [ "$TRAVIS" != "true" ]; then
+if [[ -n "$WERCKER_STEP_ID" ]]; then
+
+	echo "Wercker CI environment detected."
+  	sudo apt-get update
+
+	sudo gem install --no-rdoc --no-ri chef --version $chef_version
+	add_rukosan_user
+
+	# rvmsudo is the only way to give chef the needed permissions
+	sudo_command=sudo
+
+else
 
 	# Are we on a vanilla system?
 	if (! command -v chef-solo >/dev/null 2>&1) || (! chef-solo --version | grep $chef_version); then
@@ -53,23 +64,6 @@ if [ "$TRAVIS" != "true" ]; then
 	fi &&
 
 	sudo_command=sudo
-
-else
-
-	echo "Travis CI environment detected."
-  sudo apt-get update
-
-	# Remove exsiting Postgres installation
-	sudo /etc/init.d/postgresql stop
-	sudo apt-get --force-yes -fuy remove --purge postgresql postgresql-9.1 postgresql-client lxc
-
-	sudo mkdir -p /var/log/postgresql
-
-	gem install --no-rdoc --no-ri chef --version $chef_version
-	add_rukosan_user
-
-	# rvmsudo is the only way to give chef the needed permissions
-	sudo_command=rvmsudo
 fi
 
 $sudo_command chef-solo -c solo.rb -j solo.json
