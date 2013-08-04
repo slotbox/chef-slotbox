@@ -1,0 +1,4 @@
+{
+  "prepare": "source bootstrap.sh",
+  "test": "sudo su - rukosan -c \"cd /home/rukosan/openruko/integration-tests &&  ./run.sh\""
+}
